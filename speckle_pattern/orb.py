@@ -2,7 +2,7 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 
-def detect_orb(image, orb_parameters=None, mask=None, verbosityFlag=0):
+def detect_orb(image, orb_parameters=None, mask=None):
 
     """
     Detect ORB features.
@@ -27,8 +27,6 @@ def detect_orb(image, orb_parameters=None, mask=None, verbosityFlag=0):
         If None: dict(nfeatures = 500, scaleFactor = 1.2, nlevels = 8, edgeThreshold = 31, firstlevel = 0, WTA_K = 2, scoreType = 0,  patchSize = 31, fastTheshold = 20) is used.
     mask : numpy.ndarray
         Binary image defining the area (mask) to seacrh for corners.
-    verbosityFlag : int, default=0
-        Determine if the plots are shown or not.
 
     Returns
     -------
@@ -51,9 +49,6 @@ def detect_orb(image, orb_parameters=None, mask=None, verbosityFlag=0):
         points = np.append(points, np.array(kp[point_nr].pt).reshape((1, 1, 2)), axis=0)
     points = np.delete(points, 0, 0)
 
-    if verbosityFlag >= 2:
-        plot_orb(image, points, display=True)
-    return points, kp, des
 
 def plot_orb(image, points, display=False):
     nr_points = points.shape[0]
