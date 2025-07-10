@@ -93,7 +93,7 @@ generate_checkerboard(image_height, image_width, dpi, line_width=line_width, pat
 <p align='center'><img src='example_checkerboard.jpg' width=400 alt='checkerboard'/></p>
 
 
-#### Example KAZE feature detection on generated spackle
+#### Example KAZE feature detection on generated speckle
 
 ```python
 from speckle_pattern.kaze import detect_kaze, plot_kaze
