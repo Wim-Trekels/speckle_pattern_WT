@@ -1,4 +1,8 @@
 Generate print-ready images of a random speckle pattern for DIC applications.
+<br>
+Changes from Wim Trekels for OpenSD2025 assignment: 
+*   Implemented ORB, KAZE, and SIFT feature detection functions using OpenCV to evaluate how effectively features can be detected in the generated speckle pattern.
+*   Added a requirements.txt file
 
 #### Installation
 
