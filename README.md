@@ -6,6 +6,10 @@ This package is hosted on PyPI. Install it using `pip`:
 
 ```pip install speckle_pattern```
 
+All necessary packages can also be installed using the `requirements.txt` file:
+
+```pip install -r requirements.txt```
+
 
 #### Example speckle pattern
 
@@ -87,6 +91,32 @@ generate_checkerboard(image_height, image_width, dpi, line_width=line_width, pat
 ```
 
 <p align='center'><img src='example_checkerboard.jpg' width=400 alt='checkerboard'/></p>
+
+
+#### Example KAZE feature detection on generated spackle
+
+```python
+from speckle_pattern.kaze import detect_kaze, plot_kaze
+import cv2 as cv
+import numpy as np
+
+if speckle.dtype != np.uint8:
+    speckle = cv.normalize(speckle, None, 0, 255, cv.NORM_MINMAX)
+    speckle = speckle.astype(np.uint8)
+
+# Set detector parameters
+kaze_detection_parameters = dict(extended=False, upright=False, threshold= 0.01, nOctaves=4, nOctaveLayers=4, diffusivity=1)
+
+# Detect KAZE features in the speckle image
+points_kaze, kp_kaze, des_kaze = detect_kaze(speckle, kaze_parameters=kaze_detection_parameters, mask = None)
+
+# Plot the features in the image
+vis = plot_kaze(image = speckle, points=points_kaze, display= True)
+```
+
+<p align='center'><img src='KAZE_example.png' width=400 alt='checkerboard'/></p>
+
+
 
 ### Authors
 
